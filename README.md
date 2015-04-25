@@ -1,2 +1,2 @@
 # lendingLibrary
-Simple project to refine and showcase fundamental Java skills
+A borrower can borrow books and DVDs.  A simple project to display coding skills in Java.  
