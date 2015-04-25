@@ -1,4 +1,4 @@
-# lendingLibrary
+# Simple-Library
 This program models a lending library.  A customer can borrow books and/or DVDs.  Books are due in 3 weeks and DVDs are due in one week.  Books and DVDs are materials.  DVDs must be licensed to be borrowed.  Books are added and found via the BookCatalog class.  
 
 This project contains sample code to display competency in Java SE -- namely mine. Moreover, the lending library project is meant to showcase concepts which are crucial for any decent Java developer to know.  
