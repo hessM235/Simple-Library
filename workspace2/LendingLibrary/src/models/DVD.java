@@ -4,7 +4,7 @@ public class DVD extends Material {
 
 	private String director;
 	private String catalogNo;
-	private int runinTime;
+	private int runInTime;
 	private boolean licensed;
 
 	public DVD(int id, String title, String branch, String director,
@@ -12,7 +12,7 @@ public class DVD extends Material {
 		super(id, title, branch);
 		this.director = director;
 		this.catalogNo = catalogNo;
-		this.runinTime = runinTime;
+		this.runInTime = runinTime;
 		licensed = false;
 	}
 

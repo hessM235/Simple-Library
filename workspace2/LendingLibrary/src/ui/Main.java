@@ -10,13 +10,14 @@ import java.util.Locale;
 import utilities.GenderType;
 import models.Book;
 import models.BookCatalog;
+import models.BookNotFoundException;
 import models.Customer;
 import models.DVD;
 import models.Material;
 
 public class Main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws BookNotFoundException {
 
 		double d = 1;
 
@@ -53,14 +54,19 @@ public class Main {
 		ui.printHeader();
 
 		ui.printBookCatalog(bookCatalog.getBook());
-
-		Book foundBook = bookCatalog.findBook("Better java");
-		if (foundBook != null) {
-			System.out.println("We found " + foundBook.getTitle());
+		
+		try
+		{
+		Book foundBook = bookCatalog.findBook("Better Java");
+		System.out.println("We found " + foundBook.getTitle());
+		}catch(BookNotFoundException e)
+		{
+			System.out.println("The book wasn't found.");
 		}
 
 		Customer customer = new Customer("Mr.", "Michael", "Smith",
 				"1 high street", "1234", "a@b.com", 1, GenderType.MALE);
+		
 		System.out.println(customer.getExpiryDate());
 		System.out.println(customer.getMailingName());
 
