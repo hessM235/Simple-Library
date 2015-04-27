@@ -2,6 +2,7 @@ package ui;
 
 import java.math.BigDecimal;
 import java.text.NumberFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -13,11 +14,15 @@ import models.BookCatalog;
 import models.BookNotFoundException;
 import models.Customer;
 import models.DVD;
+import models.Loan;
+import models.LoanAlreadyExistException;
+import models.LoanRegistry;
 import models.Material;
 
 public class Main {
 
-	public static void main(String[] args) throws BookNotFoundException {
+	public static void main(String[] args) throws BookNotFoundException,
+			LoanAlreadyExistException {
 
 		double d = 1;
 
@@ -54,26 +59,24 @@ public class Main {
 		ui.printHeader();
 
 		ui.printBookCatalog(bookCatalog.getBook());
-		
-		try
-		{
-		Book foundBook = bookCatalog.findBook("Better Java");
-		System.out.println("We found " + foundBook.getTitle());
-		}catch(BookNotFoundException e)
-		{
+
+		try {
+			Book foundBook = bookCatalog.findBook("Better Java");
+			System.out.println("We found " + foundBook.getTitle());
+		} catch (BookNotFoundException e) {
 			System.out.println("The book wasn't found.");
 		}
 
 		Customer customer = new Customer("Mr.", "Michael", "Smith",
 				"1 high street", "1234", "a@b.com", 1, GenderType.MALE);
-		
+
 		System.out.println(customer.getExpiryDate());
 		System.out.println(customer.getMailingName());
 
 		System.out.println(customer);
 		System.out.println(dvd1);
-		
+
 		System.out.println(dvd1.equals(dvd1));
-		
+
 	}
 }
