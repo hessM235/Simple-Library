@@ -16,6 +16,7 @@ import models.Customer;
 import models.DVD;
 import models.Loan;
 import models.LoanAlreadyExistException;
+import models.LoanNotFoundException;
 import models.LoanRegistry;
 import models.Material;
 
@@ -77,6 +78,32 @@ public class Main {
 		System.out.println(dvd1);
 
 		System.out.println(dvd1.equals(dvd1));
+
+		Loan firstLoan = new Loan(1, customer, book1);
+		System.out.println(firstLoan.getDueDate());
+		System.out.println(firstLoan);
+
+		LoanRegistry registry = new LoanRegistry();
+
+		try {
+			registry.addLoan(firstLoan);
+			System.out.println("addloan worked");
+		
+		} catch (LoanAlreadyExistException e) {
+			System.out.println("addloan failed");
+		}
+		
+		try {
+			registry.addLoan(firstLoan);
+			System.out.println("addloan worked");
+		
+		} catch (LoanAlreadyExistException e) {
+			System.out.println("addloan failed");
+		}
+		
+		System.out.println(registry.isBookOnLoan(book1.getID()));
+		firstLoan.endLoan();
+		System.out.println(registry.isBookOnLoan(book1.getID()));
 
 	}
 }

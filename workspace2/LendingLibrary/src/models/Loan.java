@@ -1,45 +1,47 @@
 package models;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 import utilities.LoanStatus;
 
 public class Loan {
 
-	private int id;
-	private String customer;
-	private String book;
+	private int ID;
+	private Customer customer;
+	private Book book;
 	private Date startDate;
 	private Date dueDate;
 	private Date returnDate;
 	private LoanStatus status;
 
-	public Loan(int id, String customer, String book, Date startDate,
-			Date dueDate, LoanStatus status) throws ParseException {
-		
-		Date startDate1 = new SimpleDateFormat("MM/dd/yyyy").parse("04/27/2015");
-		Date dueDate1 = new SimpleDateFormat("MM/dd/yyyy").parse("05/11/2015");
-		
-		this.id = id;
+	public Loan(int ID, Customer customer, Book book) {
+
+		this.ID = ID;
 		this.customer = customer;
 		this.book = book;
-		this.startDate = startDate1;
-		this.dueDate = dueDate1;
-		this.status = LoanStatus.CURRENT;
+		this.startDate = new Date();
+
+		GregorianCalendar gCal = new GregorianCalendar();
+		gCal.add(GregorianCalendar.DAY_OF_MONTH, 14);
+
+		this.dueDate = gCal.getTime();
+
+		status = LoanStatus.CURRENT;
 	}
 
 	@Override
 	public String toString() {
-		return "Loan [customer=" + customer + ", book=" + book + "]";
+		return "Loan [ID=" + ID + ", customer=" + customer.getMailingName()
+				+ ", book=" + book.getTitle() + "]";
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + id;
+		result = prime * result + ID;
 		return result;
 	}
 
@@ -52,30 +54,31 @@ public class Loan {
 		if (getClass() != obj.getClass())
 			return false;
 		Loan other = (Loan) obj;
-		if (id != other.id)
+		if (ID != other.ID)
 			return false;
 		return true;
 	}
 
-	public String getCustomer() {
+	public Customer getCustomer() {
 		return customer;
 	}
 
-	public String getBook() {
+	public Book getBook() {
 		return book;
 	}
 
 	public Date getDueDate() {
 		return dueDate;
 	}
+
+	public LoanStatus getStatus() {
+		return status;
+	}
 	
-	public void endLoan() throws ParseException {
-		
-		Date returnDate1 = new SimpleDateFormat("MM/dd/yyyy").parse("04/27/2015");
-		
+	public void endLoan() {
 		status = LoanStatus.HISTORIC;
-		returnDate = returnDate1;
-		
+		returnDate = new Date();
+
 	}
 
 }

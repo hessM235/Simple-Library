@@ -1,26 +1,50 @@
 package models;
 
+import utilities.LoanStatus;
+
 public class LoanRegistry {
 
-	private Loan[] registry = new Loan[100];
-	private int nextPosition = 0;
+	private Loan[] registry;
+	private int nextPosition;
 
-	public LoanRegistry(Loan[] registry) {
-		super();
-		this.registry = registry;
+	public LoanRegistry() {
+
+		registry = new Loan[100];
+		nextPosition = 0;
 	}
 
 	public void addLoan(Loan loan) throws LoanAlreadyExistException {
 
-		registry[nextPosition] = loan;
-
 		for (int i = 0; i < nextPosition; i++) {
 			if (registry[i].equals(loan)) {
 				throw new LoanAlreadyExistException();
-
-			} else {
-				nextPosition++;
 			}
 		}
+		registry[nextPosition] = loan;
+		nextPosition++;
+
+	}
+
+	public Loan findLoan(int bookId) throws LoanNotFoundException {
+
+		for (int i = 0; i < nextPosition; i++) {
+			if (registry[i].getBook().getID() == bookId
+					&& registry[i].getStatus() == LoanStatus.CURRENT) {
+				return registry[i];
+			}
+		}
+		throw new LoanNotFoundException();
+
+	}
+
+	public boolean isBookOnLoan(int bookId) {
+
+		try {
+			Loan foundLoan = findLoan(bookId);
+			return true;
+		} catch (LoanNotFoundException e) {
+			return false;
+		}
+
 	}
 }
