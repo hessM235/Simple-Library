@@ -8,6 +8,10 @@ public class BookCatalog {
 	public Book[] getBook() {
 		return bookArray;
 	}
+	
+	public int getNumberOfBooks() {
+		return nextPosition;
+	}
 
 	public void addBook(Book newBook) {
 
