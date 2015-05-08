@@ -22,6 +22,7 @@ public class BookCatalog {
 
 	public Book findBook(String title) throws BookNotFoundException {
 
+		title = title.trim();
 		for (int i = 0; i < nextPosition; i++)  {
 			if (bookArray[i].getTitle().equalsIgnoreCase(title)) {		
 				return bookArray[i];
