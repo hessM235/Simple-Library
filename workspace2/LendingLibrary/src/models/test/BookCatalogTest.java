@@ -22,8 +22,8 @@ public class BookCatalogTest {
 	public void testAddABook() {
 
 		int initialNumber = bc.getNumberOfBooks();
-
-		Book book = new Book(1, "", "", "", "", 0);
+		System.out.println(initialNumber);
+		Book book = new Book(2, "", "", "", "", 0);
 		bc.addBook(book);
 
 		assertTrue(initialNumber == bc.getNumberOfBooks() - 1);
@@ -50,7 +50,7 @@ public class BookCatalogTest {
 	public void testFindABookIgnoreCase() {
 
 		try {
-			Book foundBook = bc.findBook("intro To Java");
+			Book foundBook = bc.findBook("Intro To Java");
 		} catch (BookNotFoundException e) {
 			fail("Book Not Found");
 		}

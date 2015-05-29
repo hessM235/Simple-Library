@@ -25,11 +25,11 @@ public class LoanRegistry {
 
 	}
 
-	public Loan findLoan(int bookId) throws LoanNotFoundException {
+	public Loan findLoan(String bookId) throws LoanNotFoundException {
 
 		for (int i = 0; i < nextPosition; i++) {
 			if (registry[i].getBook().getID() == bookId
-					&& registry[i].getStatus() == LoanStatus.CURRENT) {
+					&& registry[i].getStatus().equals(LoanStatus.CURRENT)) {
 				return registry[i];
 			}
 		}
@@ -37,7 +37,7 @@ public class LoanRegistry {
 
 	}
 
-	public boolean isBookOnLoan(int bookId) {
+	public boolean isBookOnLoan(String bookId) {
 
 		try {
 			Loan foundLoan = findLoan(bookId);

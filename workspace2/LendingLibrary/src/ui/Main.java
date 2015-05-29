@@ -59,7 +59,7 @@ public class Main {
 		UI ui = new UI();
 		ui.printHeader();
 
-		ui.printBookCatalog(bookCatalog.getBook());
+		ui.printBookCatalog(bookCatalog.getBookMap());
 
 		try {
 			Book foundBook = bookCatalog.findBook("Better Java");

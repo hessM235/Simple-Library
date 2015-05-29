@@ -1,4 +1,7 @@
 package ui;
+
+import java.util.HashMap;
+
 import models.Book;
 
 public class UI {
@@ -33,11 +36,11 @@ public class UI {
 		return fixLengthString(startString, length);
 	}
 
-	public void printBookCatalog(Book[] bookCatalog) {
-		for (int counter =0; counter < bookCatalog.length; counter++ ) {
-			if(bookCatalog[counter] != null){
-				printBook(bookCatalog[counter]);
-			}
+	public void printBookCatalog(HashMap<Integer, Book> bookCatalog) {
+		for (Book nextBook : bookCatalog.values()) {
+
+			printBook(nextBook);
+
 		}
 	}
 }
