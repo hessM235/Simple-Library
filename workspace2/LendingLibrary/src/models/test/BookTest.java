@@ -9,8 +9,8 @@ public class BookTest {
 
 	@Test
 	public void testTwoEqualBooks() {
-		Book book1 = new Book(1, "", "", "", "", 0);
-		Book book2 = new Book(1, "", "", "", "", 0);
+		Book book1 = new Book("1", "", "", "", "", 0);
+		Book book2 = new Book("1", "", "", "", "", 0);
 				
 		assertTrue(book1.equals(book2));
 	}
@@ -18,8 +18,8 @@ public class BookTest {
 	@Test
 	public void testTwoUnequalBooks() {
 		
-		Book book1 = new Book(1, "", "", "", "", 0);
-		Book book2 = new Book(2, "", "", "", "", 0);
+		Book book1 = new Book("1", "", "", "", "", 0);
+		Book book2 = new Book("2", "", "", "", "", 0);
 	
 		assertFalse(book1.equals(book2));
 		

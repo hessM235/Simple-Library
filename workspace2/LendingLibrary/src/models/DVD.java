@@ -7,7 +7,7 @@ public class DVD extends Material {
 	private int runInTime;
 	private boolean licensed;
 
-	public DVD(int id, String title, String branch, String director,
+	public DVD(String id, String title, String branch, String director,
 			String catalogNo, int runinTime) {
 		super(id, title, branch);
 		this.director = director;

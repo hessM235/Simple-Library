@@ -1,10 +1,12 @@
 package models;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.TreeMap;
 
 public class BookCatalog {
 
-	private HashMap<Integer, Book> bookMap;
+	private TreeMap<String, Book> bookMap;
 	
 	
 
@@ -12,10 +14,10 @@ public class BookCatalog {
 	// private int nextPosition = 0;
 
 	public BookCatalog() {
-		bookMap = new HashMap<String, Book>();
+		bookMap = new TreeMap<String, Book>();
 	}
 
-	public HashMap<String, Book> getBookMap() {
+	public TreeMap<String, Book> getBookMap() {
 		return bookMap;
 	}
 

@@ -18,7 +18,7 @@ public class LoanTest {
 	@Test
 	public void testDueDate() {
 		
-		Book book = new Book(1,"","","","",2);
+		Book book = new Book("1","","","","",2);
 		Customer customer = new Customer("","","","","","", 1,GenderType.MALE);
 		
 		Loan loan = new Loan(0,customer,book);

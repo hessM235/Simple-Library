@@ -41,17 +41,27 @@ public class Main {
 
 		BookCatalog bookCatalog = new BookCatalog();
 
-		Book book1 = new Book(1, "Intro to Java", "Matt Greencroft", "12345",
-				"any town", 400);
-		Book book2 = new Book(2, "Better Java", "Joe LeBlanc", "23456",
-				"any town", 150);
-		DVD dvd1 = new DVD(3, "An Epic Film About Java", "Anytown Branch",
-				"Steven Spielberg", "99887", 120);
-		DVD dvd2 = new DVD(3, "An Epic Film About Java", "Anytown Branch",
-				"Steven Spielberg", "99887", 120);
+		Book book1 = new Book("1001", "Intro to Java", "Matt Greencroft", "12345", "Branch 1",150);
+		Book book2 = new Book("223X", "Better Java", "Joe LeBlanc", "23456",
+				"Branch 2", 100);
+		Book book3 = new Book("9020", "Learning Spanish", "Jose Santiago", "23456",
+				"Branch 3", 150);
+		Book book4 = new Book("444X", "Learning Spanish 2", "Jose Santiago", "12345", "Branch 1",150);
+		Book book5 = new Book("33345", "Learning Spanish 3", "Jose Santiago", "12345", "Branch 1",150);
+		
+		//DVD dvd1 = new DVD("3", "An Epic Film About Java", "Anytown Branch",
+		//		"Steven Spielberg", "99887", 120);
+		//DVD dvd2 = new DVD("3", "An Epic Film About Java", "Anytown Branch",
+		//		"Steven Spielberg", "99887", 120);
+		
+		bookCatalog.addBook(book1);
+		bookCatalog.addBook(book2);
+		bookCatalog.addBook(book3);
+		bookCatalog.addBook(book4);
+		bookCatalog.addBook(book5);
 
-		System.out.println(dvd1.getTitle());
-		book1.relocate("MyCity Branch");
+		//System.out.println(dvd1.getTitle());
+		//book1.relocate("MyCity Branch");
 
 		bookCatalog.addBook(book1);
 		bookCatalog.addBook(book2);
@@ -60,7 +70,9 @@ public class Main {
 		ui.printHeader();
 
 		ui.printBookCatalog(bookCatalog.getBookMap());
+		
 
+	
 		try {
 			Book foundBook = bookCatalog.findBook("Better Java");
 			System.out.println("We found " + foundBook.getTitle());
@@ -75,10 +87,7 @@ public class Main {
 		System.out.println(customer.getMailingName());
 
 		System.out.println(customer);
-		System.out.println(dvd1);
-
-		System.out.println(dvd1.equals(dvd1));
-
+	
 		Loan firstLoan = new Loan(1, customer, book1);
 		System.out.println(firstLoan.getDueDate());
 		System.out.println(firstLoan);
