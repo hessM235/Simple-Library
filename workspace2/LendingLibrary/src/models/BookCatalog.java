@@ -8,10 +8,6 @@ public class BookCatalog {
 
 	private TreeMap<String, Book> bookMap;
 	
-	
-
-	// private Book[] bookArray = new Book[100];
-	// private int nextPosition = 0;
 
 	public BookCatalog() {
 		bookMap = new TreeMap<String, Book>();
