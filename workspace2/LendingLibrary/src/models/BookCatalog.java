@@ -31,7 +31,7 @@ public class BookCatalog {
 		title = title.trim();
 
 		for (Book nextBook : bookMap.values()) {
-			if (nextBook.getTitle().equals(title)) {
+			if (nextBook.getTitle().equalsIgnoreCase(title)) {
 				return nextBook;
 			}
 		}
