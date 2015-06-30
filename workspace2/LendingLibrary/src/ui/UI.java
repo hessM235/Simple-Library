@@ -39,13 +39,6 @@ public class UI {
 		return fixLengthString(startString, length);
 	}
 
-	public void printBookCatalog(TreeMap<String, Book> treeMap) {
-		for (Book nextBook : treeMap.values()) {
-
-			printBook(nextBook);
-		}
-	}
-
 	public void printMaterialCatalog(TreeMap<String, Material> materialCatalog) {
 		for (Material nextMaterial : materialCatalog.values()) {
 

@@ -3,18 +3,18 @@ package models.test;
 import static org.junit.Assert.*;
 import models.Book;
 import models.Material;
-import models.MaterialCatalog;
+import models.MaterialCatalogMemoryVersion;
 import models.MaterialNotFoundExcepton;
 
 import org.junit.Test;
 
 public class MaterialCatalogTest {
 
-	private MaterialCatalog bc;
+	private MaterialCatalogMemoryVersion bc;
 	private Book book1;
 
 	public MaterialCatalogTest() {
-		bc = new MaterialCatalog();
+		bc = new MaterialCatalogMemoryVersion();
 		Book book1 = new Book("1","Intro to Java","","","",0);
 		bc.addMaterial(book1);
 	}

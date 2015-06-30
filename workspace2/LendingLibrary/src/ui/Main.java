@@ -10,36 +10,36 @@ import java.util.Locale;
 
 import utilities.GenderType;
 import models.Book;
-import models.BookCatalog;
-import models.BookNotFoundException;
 import models.Customer;
 import models.DVD;
 import models.Loan;
 import models.LoanAlreadyExistException;
-import models.LoanNotFoundException;
 import models.LoanRegistry;
 import models.Material;
+import models.MaterialCatalogInterface;
+import models.MaterialCatalogMemoryVersion;
 
 public class Main {
 
-	public static void main(String[] args) throws BookNotFoundException,
-			LoanAlreadyExistException {
-
-		double d = 1;
-
-		NumberFormat nf = NumberFormat.getCurrencyInstance();
-		nf.setMinimumFractionDigits(5);
-		nf.setMaximumFractionDigits(5);
-		// System.out.println(nf.format(d));
-
-		BigDecimal price = new BigDecimal(0.1);
-		BigDecimal addValue = new BigDecimal(0.1);
-		for (int i = 0; i < 10; i++) {
-			price = price.add(addValue);
-			System.out.println(price);
-		}
-
-		BookCatalog bookCatalog = new BookCatalog();
+	public static void main(String[] args) {
+//			throws BookNotFoundException,
+//			LoanAlreadyExistException {
+//
+//		double d = 1;
+//
+//		NumberFormat nf = NumberFormat.getCurrencyInstance();
+//		nf.setMinimumFractionDigits(5);
+//		nf.setMaximumFractionDigits(5);
+//		// System.out.println(nf.format(d));
+//
+//		BigDecimal price = new BigDecimal(0.1);
+//		BigDecimal addValue = new BigDecimal(0.1);
+//		for (int i = 0; i < 10; i++) {
+//			price = price.add(addValue);
+//			System.out.println(price);
+//		}
+		
+		MaterialCatalogInterface materialCatalog = new MaterialCatalogMemoryVersion();
 
 		Book book1 = new Book("1001", "Intro to Java", "Matt Greencroft", "12345", "Branch 1",150);
 		Book book2 = new Book("223X", "Better Java", "Joe LeBlanc", "23456",
@@ -49,36 +49,36 @@ public class Main {
 		Book book4 = new Book("444X", "Learning Spanish 2", "Jose Santiago", "12345", "Branch 1",150);
 		Book book5 = new Book("33345", "Learning Spanish 3", "Jose Santiago", "12345", "Branch 1",150);
 		
-		//DVD dvd1 = new DVD("3", "An Epic Film About Java", "Anytown Branch",
-		//		"Steven Spielberg", "99887", 120);
-		//DVD dvd2 = new DVD("3", "An Epic Film About Java", "Anytown Branch",
-		//		"Steven Spielberg", "99887", 120);
+		DVD dvd1 = new DVD("3", "An Epic Film About Java", "Anytown Branch",
+				"Steven Spielberg", "99887", 120);
+		DVD dvd2 = new DVD("4", "An Epic Film About Java", "Anytown Branch",
+				"Steven Spielberg", "99887", 120);
 		
-		bookCatalog.addBook(book1);
-		bookCatalog.addBook(book2);
-		bookCatalog.addBook(book3);
-		bookCatalog.addBook(book4);
-		bookCatalog.addBook(book5);
+		materialCatalog.addMaterial(book1);
+		materialCatalog.addMaterial(book2);
+		materialCatalog.addMaterial(book3);
+		materialCatalog.addMaterial(book4);
+		materialCatalog.addMaterial(book5);
 
 		//System.out.println(dvd1.getTitle());
 		//book1.relocate("MyCity Branch");
 
-		bookCatalog.addBook(book1);
-		bookCatalog.addBook(book2);
+		materialCatalog.addMaterial(dvd1);
+		materialCatalog.addMaterial(dvd2);
 
 		UI ui = new UI();
 		ui.printHeader();
 
-		ui.printBookCatalog(bookCatalog.getBookMap());
+		ui.printMaterialCatalog(materialCatalog.getMaterialMap());
 		
 
 	
-		try {
-			Book foundBook = bookCatalog.findBook("Better Java");
-			System.out.println("We found " + foundBook.getTitle());
-		} catch (BookNotFoundException e) {
-			System.out.println("The book wasn't found.");
-		}
+//		try {
+//			Book foundBook = materialCatalog.findBook("Better Java");
+//			System.out.println("We found " + foundBook.getTitle());
+//		} catch (BookNotFoundException e) {
+//			System.out.println("The book wasn't found.");
+//		}
 
 		Customer customer = new Customer("Mr.", "Michael", "Smith",
 				"1 high street", "1234", "a@b.com", 1, GenderType.MALE);
