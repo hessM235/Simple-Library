@@ -24,11 +24,16 @@ public class MaterialCatalog {
 		title = title.trim();
 
 		for (Material nextMaterial : materialMap.values()) {
+			
 			if (nextMaterial.getTitle().equals(title)) {
 				return nextMaterial;
 			}
 		}
 
 		throw new MaterialNotFoundExcepton();
+	}
+	
+	public int getNumberOfMaterials(){
+		return materialMap.size();
 	}
 }
